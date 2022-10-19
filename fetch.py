@@ -10,16 +10,24 @@ def get_args():
     
     parser = argparse.ArgumentParser(description='Fetch web pages', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('links', nargs='+', help='Links to be fetched and saved', metavar='URLs', type=str)
+    parser.add_argument('links', nargs='*', help='Links to be fetched and saved', metavar='URLs', type=str)         # For getting link arguments
 
-    # parser.add_argument('--metadata', nargs='+', help='Links to be fetched and saved', metavar='str', type=str)
+    parser.add_argument('-m', '--metadata', nargs=1, help='Show the metadata information for a link', metavar='str', type=str)           # For getting metadata arguments
 
     return parser.parse_args()
 
 def main():
+    '''
+    Downloading and saving the metadata
+    '''
     args = get_args()
 
     urls = args.links
+    meta = args.metadata
+
+    if urls == [] and not meta:
+        print('No URLs provided')
+        return
 
     for item in urls:
         try:
