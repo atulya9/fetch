@@ -2,10 +2,10 @@
 # Purpose: Fetch the webpage and save it to a file
 
 from sys import meta_path
-import requests
-import argparse
-import re
-import json
+import requests                     # For getting response data from URL
+import argparse                     # For getting arguments from command line
+import re                           # For getting the basedomain
+import json                         # For saving the metadata
 from bs4 import BeautifulSoup       # For counting the number of links and images
 
 
@@ -21,6 +21,7 @@ def get_args():
     parser.add_argument('-m', '--metadata', help='Show the metadata information for a link. Takes the base domain as argument', metavar='str', type=str)           # For getting metadata arguments
 
     return parser.parse_args()
+
 
 def main():
     '''
@@ -66,7 +67,7 @@ def main():
 
     json.dump(meta_data, open('metadata.json', 'w'))                                                    # Updating the JSON file
 
-    if meta_id:
+    if meta_id:                                                                                         # To display metadata
         try:
             meta_data = json.load(open('metadata.json'))
             vals = meta_data[meta_id]
