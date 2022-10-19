@@ -25,8 +25,22 @@ HTML saved for site: www.facebook.com at ./www.facebook.com.html
 
 Output:
 ```
-site: www.google.com`
-num_links: 27`
+site: www.google.com
+num_links: 27
 images: 1
 last_fetch: some date
+```
+
+Note: To run it without using `python` or `python3` the command `chmod +x fetch.py` needs to be executed to make the file executable.
+
+## Running in a docker container
+This CLI can also be run using docker using the Dockerfile provided. To run it using docker run the following commands
+1. To build the docker image
+```
+docker build -t image-name .
+```
+
+2. To run the image
+```
+docker run image-name <URLs> --metadata <URL>
 ```
