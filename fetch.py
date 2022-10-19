@@ -21,7 +21,11 @@ def main():
 
     urls = args.links
 
-    print(urls)
+    for item in urls:
+        basedomain = item.split('/')[2]
+        r = requests.get(url=item)
+        with open(f'{basedomain}.html', 'w') as f:
+            f.write(r.text)
 
 if __name__ == '__main__':
     main()
